@@ -33,7 +33,10 @@ public class appleTree : MonoBehaviour
         {
             speed = -Mathf.Abs(speed);
         }
-        else if(Random.value < changeDirChance)
+    }
+    private void FixedUpdate()
+    {
+        if (Random.value < changeDirChance)
         {
             speed *= -1;
         }
