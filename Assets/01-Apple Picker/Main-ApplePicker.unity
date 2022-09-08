@@ -708,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 6913434281435915173, guid: 1cb0c11b424349e45bf083568deaeeb2, type: 3}
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: appleDropRate
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: changeDirChance
