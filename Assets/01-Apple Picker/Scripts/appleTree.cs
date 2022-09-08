@@ -16,7 +16,14 @@ public class appleTree : MonoBehaviour
 
     void Start()
     {
-        
+        Invoke("dropApple", 2f);
+    }
+
+    void dropApple()
+    {
+        GameObject thisApple = Instantiate(applePref, transform.position, transform.rotation);
+
+        Invoke("dropApple", appleDropRate);
     }
 
     void Update()

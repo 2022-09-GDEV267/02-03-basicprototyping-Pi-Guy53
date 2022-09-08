@@ -698,6 +698,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: applePref
+      value: 
+      objectReference: {fileID: 6913434281435915173, guid: 1cb0c11b424349e45bf083568deaeeb2, type: 3}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: appleDropRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: changeDirChance
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: leftRightBounds
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3052211521001098618, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Name
       value: tree
@@ -712,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521001098621, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521001098621, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -756,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 338193055}
     - target: {fileID: 3052211521537484060, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1229
+      value: 1235
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521731954434, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Mesh
@@ -768,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 156747503}
     - target: {fileID: 3052211521731954439, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1950
+      value: 1956
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
