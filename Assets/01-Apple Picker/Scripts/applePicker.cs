@@ -20,4 +20,13 @@ public class applePicker : MonoBehaviour
             GameObject thisBasket = Instantiate(basketPrefab, pos, transform.rotation);
         }
     }
+
+    public void appleDestroyed()
+    {
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("apple");
+        for(int i = 0; i < tAppleArray.Length; i++)
+        {
+            Destroy(tAppleArray[i]);
+        }
+    }
 }
