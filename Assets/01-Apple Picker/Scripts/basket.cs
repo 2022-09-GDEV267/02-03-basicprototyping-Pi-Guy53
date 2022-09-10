@@ -22,6 +22,9 @@ public class basket : MonoBehaviour
 
     private void OnCollisionEnter(Collision coll)
     {
-        
+        if(coll.collider.CompareTag("apple"))
+        {
+            Destroy(coll.collider.gameObject);
+        }
     }
 }
