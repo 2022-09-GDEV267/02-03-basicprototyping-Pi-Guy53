@@ -37,5 +37,10 @@ public class applePicker : MonoBehaviour
 
         basketList.Remove(tbasket);
         Destroy(tbasket);
+
+        if(basketList.Count == 0)
+        {
+            SceneManager.LoadScene("Main-ApplePicker");
+        }
     }
 }
