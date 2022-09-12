@@ -40,6 +40,7 @@ public class ScoreManager : MonoBehaviour
         }
         else if(score > waveProgressionScore)
         {
+            waveProgressionScore += score;
             appleTree.tree.newWave();
         }
     }

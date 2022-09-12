@@ -43,5 +43,7 @@ public class applePicker : MonoBehaviour
         {
             SceneManager.LoadScene("Main-ApplePicker");
         }
+
+        appleTree.tree.resetAppleDrop();
     }
 }

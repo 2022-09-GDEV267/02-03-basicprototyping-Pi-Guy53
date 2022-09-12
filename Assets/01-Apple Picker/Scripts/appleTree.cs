@@ -33,6 +33,8 @@ public class appleTree : MonoBehaviour
         Invoke("dropApple", 2f);
 
         ScoreManager.scoreManager.defScore = score;
+
+        waveCount = 1;
     }
 
     void dropApple()
@@ -59,7 +61,28 @@ public class appleTree : MonoBehaviour
 
     public void newWave()
     {
+        speed = speed + (speed *( waveProgressionPercentage / waveCount));
 
+        if (appleDropRate.x > 0)
+        {
+            appleDropRate.x -= waveProgressionPercentage;
+        }
+        if (appleDropRate.y > .25)
+        {
+            appleDropRate.y -= (waveProgressionPercentage / waveCount);
+        }
+
+        changeDirChance = changeDirChance + (changeDirChance * (waveProgressionPercentage / waveCount));
+
+        waveCount++;
+
+        resetAppleDrop();
+    }
+
+    public void resetAppleDrop()
+    {
+        CancelInvoke("dropApple");
+        Invoke("dropApple", 2);
     }
 
     void Update()
