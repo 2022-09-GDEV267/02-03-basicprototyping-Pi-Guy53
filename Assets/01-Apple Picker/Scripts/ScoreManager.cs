@@ -11,7 +11,12 @@ public class ScoreManager : MonoBehaviour
     [Header("Set Dynamically")]
     public Text scoreTxt;
 
+    [Header("Set In Inspector")]
+    public Text waveCountTxt;
+
     public int defScore;
+
+    private int waveCount;
 
     private void Awake()
     {
@@ -36,5 +41,11 @@ public class ScoreManager : MonoBehaviour
         {
             highScore.score = score;
         }
+    }
+
+    public void addWave()
+    {
+        waveCount++;
+        waveCountTxt.text = "Wave: " + waveCount;
     }
 }

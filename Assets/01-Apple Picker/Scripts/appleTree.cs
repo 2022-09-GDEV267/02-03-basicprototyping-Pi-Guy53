@@ -45,6 +45,8 @@ public class appleTree : MonoBehaviour
         passiveWave = 1;
 
         originalProgressionScore = waveProggressionScore;
+
+        ScoreManager.scoreManager.addWave();
     }
 
     void dropApple()
@@ -102,6 +104,7 @@ public class appleTree : MonoBehaviour
             waveProggressionScore += originalProgressionScore;
         }
 
+        ScoreManager.scoreManager.addWave();
         resetAppleDrop();
     }
 
