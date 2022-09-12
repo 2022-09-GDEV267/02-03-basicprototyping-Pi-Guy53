@@ -21,7 +21,14 @@ public class appleTree : MonoBehaviour
 
     public static appleTree tree;
     private int waveCount;
+    private int passiveWave;
+    public int numOfWavesForScoreIncrease;
+
     public float waveProgressionPercentage;
+    public int waveProggressionScore;
+    private int originalProgressionScore;
+
+    private int applesDropped;
 
     private void Awake()
     {
@@ -35,6 +42,9 @@ public class appleTree : MonoBehaviour
         ScoreManager.scoreManager.defScore = score;
 
         waveCount = 1;
+        passiveWave = 1;
+
+        originalProgressionScore = waveProggressionScore;
     }
 
     void dropApple()
@@ -46,35 +56,51 @@ public class appleTree : MonoBehaviour
         if (rand > extraPointsDropChance)
         {
             thisApple.GetComponent<apple>().setValue(extraPoints);
+            applesDropped += extraPoints;
         }
         else if (rand < rottenDropChance)
         {
             thisApple.GetComponent<apple>().setValue(0);
+            applesDropped += 0;
         }
         else
         {
             thisApple.GetComponent<apple>().setValue(score);
+            applesDropped += score;
         }
 
         Invoke("dropApple", Random.Range(appleDropRate.x, appleDropRate.y));
+
+        if (applesDropped >= waveProggressionScore)
+        {
+            CancelInvoke("dropApple");
+
+            newWave();
+            applesDropped = 0;
+        }
     }
 
     public void newWave()
     {
-        speed = speed + (speed *( waveProgressionPercentage / waveCount));
+        speed = speed + (speed * waveProgressionPercentage);
 
-        if (appleDropRate.x > 0)
+        if (appleDropRate.x > .1f)
         {
             appleDropRate.x -= waveProgressionPercentage;
         }
-        if (appleDropRate.y > .25)
-        {
-            appleDropRate.y -= (waveProgressionPercentage / waveCount);
-        }
+
+        appleDropRate.y += (waveProgressionPercentage / waveCount);
 
         changeDirChance = changeDirChance + (changeDirChance * (waveProgressionPercentage / waveCount));
 
         waveCount++;
+        passiveWave++;
+
+        if (passiveWave > numOfWavesForScoreIncrease)
+        {
+            passiveWave = 0;
+            waveProggressionScore += originalProgressionScore;
+        }
 
         resetAppleDrop();
     }

@@ -732,7 +732,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTxt: {fileID: 0}
   defScore: 0
-  waveProgressionScore: 500
 --- !u!1 &1240866489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1118,10 @@ PrefabInstance:
       value: 95
       objectReference: {fileID: 0}
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: waveProggressionScore
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: waveProgressionPercentage
       value: 0.1
       objectReference: {fileID: 0}
@@ -1180,7 +1183,7 @@ PrefabInstance:
       objectReference: {fileID: 338193055}
     - target: {fileID: 3052211521537484060, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1247
+      value: 1250
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521731954434, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Mesh
@@ -1192,7 +1195,7 @@ PrefabInstance:
       objectReference: {fileID: 156747503}
     - target: {fileID: 3052211521731954439, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1968
+      value: 1971
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
