@@ -23,6 +23,8 @@ public class appleTree : MonoBehaviour
     {
         GameObject thisApple = Instantiate(applePref, transform.position, transform.rotation);
 
+        thisApple.GetComponent<apple>().setValue(100);
+
         Invoke("dropApple", appleDropRate);
     }
 
