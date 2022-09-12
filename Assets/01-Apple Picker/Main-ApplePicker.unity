@@ -732,6 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTxt: {fileID: 0}
   defScore: 0
+  waveProgressionScore: 0
 --- !u!1 &1240866489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,6 +1075,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: score
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
@@ -1082,8 +1087,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6913434281435915173, guid: 1cb0c11b424349e45bf083568deaeeb2, type: 3}
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: extraPoints
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: appleDropRate
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: appleDropRate.x
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: appleDropRate.y
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: changeDirChance
@@ -1100,6 +1117,10 @@ PrefabInstance:
     - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: extraPointsDropChance
       value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: waveProgressionPercentage
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521001098618, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Name
@@ -1159,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 338193055}
     - target: {fileID: 3052211521537484060, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1241
+      value: 1247
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521731954434, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Mesh
@@ -1171,7 +1192,7 @@ PrefabInstance:
       objectReference: {fileID: 156747503}
     - target: {fileID: 3052211521731954439, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1962
+      value: 1968
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}

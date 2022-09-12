@@ -13,6 +13,8 @@ public class ScoreManager : MonoBehaviour
 
     public int defScore;
 
+    public int waveProgressionScore;
+
     private void Awake()
     {
         scoreManager = this;
@@ -35,6 +37,10 @@ public class ScoreManager : MonoBehaviour
         if (score > highScore.score)
         {
             highScore.score = score;
+        }
+        else if(score > waveProgressionScore)
+        {
+            appleTree.tree.newWave();
         }
     }
 }

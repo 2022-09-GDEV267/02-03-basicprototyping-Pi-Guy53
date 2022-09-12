@@ -10,7 +10,7 @@ public class appleTree : MonoBehaviour
     public float speed;
     public float leftRightBounds;
     public float changeDirChance;
-    public float appleDropRate;
+    public Vector2 appleDropRate;
 
     private Vector3 pos;
 
@@ -18,6 +18,15 @@ public class appleTree : MonoBehaviour
     public float rottenDropChance;
 
     public int score, extraPoints;
+
+    public static appleTree tree;
+    private int waveCount;
+    public float waveProgressionPercentage;
+
+    private void Awake()
+    {
+        tree = this;
+    }
 
     void Start()
     {
@@ -45,13 +54,18 @@ public class appleTree : MonoBehaviour
             thisApple.GetComponent<apple>().setValue(score);
         }
 
-        Invoke("dropApple", appleDropRate);
+        Invoke("dropApple", Random.Range(appleDropRate.x, appleDropRate.y));
+    }
+
+    public void newWave()
+    {
+
     }
 
     void Update()
     {
         pos = transform.position;
-        pos.x += speed * Time.deltaTime;
+        pos.x += Random.Range(speed * .75f, speed * 1.25f) * Time.deltaTime;
         transform.position = pos;
 
         if(pos.x < -leftRightBounds)
