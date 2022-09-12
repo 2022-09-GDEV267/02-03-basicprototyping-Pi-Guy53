@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-12172
+  m_Name: pb_Mesh-1240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -293,7 +293,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16330
+  m_Name: pb_Mesh-1252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 792234107}
   - component: {fileID: 792234106}
   - component: {fileID: 792234109}
+  - component: {fileID: 792234110}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -717,6 +718,20 @@ MonoBehaviour:
   basketBottom: -14
   basketSpacing: 1
   basketList: []
+--- !u!114 &792234110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792234105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b57ad4e2ed34a648471e5dbb0626ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreTxt: {fileID: 0}
+  defScore: 0
 --- !u!1 &1240866489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1093,14 @@ PrefabInstance:
       propertyPath: leftRightBounds
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: rottenDropChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1004033439722853617, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
+      propertyPath: extraPointsDropChance
+      value: 95
+      objectReference: {fileID: 0}
     - target: {fileID: 3052211521001098618, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Name
       value: tree
@@ -1136,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 338193055}
     - target: {fileID: 3052211521537484060, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1235
+      value: 1241
       objectReference: {fileID: 0}
     - target: {fileID: 3052211521731954434, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_Mesh
@@ -1148,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 156747503}
     - target: {fileID: 3052211521731954439, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1956
+      value: 1962
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9b1b47ecf9b8144814ab80423293bf, type: 3}

@@ -16,13 +16,13 @@ public class apple : MonoBehaviour
     {
         rottenSkin.SetActive(false);
         extraPointsSkin.SetActive(false);
+
+        scoreValue = 100;
     }
 
     private void Start()
     {
-        applePicker apScript = Camera.main.GetComponent<applePicker>();
-
-        scoreValue = 100;
+        apScript = Camera.main.GetComponent<applePicker>();
     }
 
     public void setValue(int newValue)
@@ -33,7 +33,7 @@ public class apple : MonoBehaviour
         {
             rottenSkin.SetActive(true);
         }
-        else if(scoreValue > 100)
+        else if(scoreValue > ScoreManager.scoreManager.defScore)
         {
             extraPointsSkin.SetActive(true);
         }

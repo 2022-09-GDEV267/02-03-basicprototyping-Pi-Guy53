@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     [Header("Set Dynamically")]
     public Text scoreTxt;
 
+    public int defScore;
+
     private void Awake()
     {
         scoreManager = this;

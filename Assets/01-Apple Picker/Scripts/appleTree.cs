@@ -14,16 +14,36 @@ public class appleTree : MonoBehaviour
 
     private Vector3 pos;
 
+    public float extraPointsDropChance;
+    public float rottenDropChance;
+
+    public int score, extraPoints;
+
     void Start()
     {
         Invoke("dropApple", 2f);
+
+        ScoreManager.scoreManager.defScore = score;
     }
 
     void dropApple()
     {
         GameObject thisApple = Instantiate(applePref, transform.position, transform.rotation);
 
-        thisApple.GetComponent<apple>().setValue(100);
+        float rand = Random.Range(0, 100) + 1;
+
+        if (rand > extraPointsDropChance)
+        {
+            thisApple.GetComponent<apple>().setValue(extraPoints);
+        }
+        else if (rand < rottenDropChance)
+        {
+            thisApple.GetComponent<apple>().setValue(0);
+        }
+        else
+        {
+            thisApple.GetComponent<apple>().setValue(score);
+        }
 
         Invoke("dropApple", appleDropRate);
     }
