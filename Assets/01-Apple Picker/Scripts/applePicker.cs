@@ -15,7 +15,30 @@ public class applePicker : MonoBehaviour
     void Start()
     {
         basketList = new List<GameObject>();
+
         for (int i = 0; i < numBaskets; i++)
+        {
+            Vector3 pos = Vector3.zero;
+            pos.y = basketBottom + (basketSpacing * i);
+
+            GameObject thisBasket = Instantiate(basketPrefab, pos, transform.rotation);
+            basketList.Add(thisBasket);
+        }
+    }
+
+    public void addLife()
+    {
+        int currentLives = basketList.Count;
+
+        for (int i = 0; i < basketList.Count; i++)
+        {
+            GameObject tbasket = basketList[basketList.Count - 1];
+
+            basketList.Remove(tbasket);
+            Destroy(tbasket);
+        }
+
+        for (int i = 0; i < currentLives + 1; i++)
         {
             Vector3 pos = Vector3.zero;
             pos.y = basketBottom + (basketSpacing * i);
