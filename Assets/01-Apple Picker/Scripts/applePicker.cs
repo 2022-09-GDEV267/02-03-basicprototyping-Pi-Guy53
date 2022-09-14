@@ -38,7 +38,14 @@ public class applePicker : MonoBehaviour
             Destroy(tbasket);
         }
 
-        for (int i = 0; i < currentLives + 1; i++)
+        currentLives++;
+
+        if (currentLives > 3)
+        {
+            currentLives = 3;
+        }
+
+        for (int i = 0; i < currentLives; i++)
         {
             Vector3 pos = Vector3.zero;
             pos.y = basketBottom + (basketSpacing * i);

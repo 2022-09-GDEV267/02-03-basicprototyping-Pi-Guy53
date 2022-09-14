@@ -95,6 +95,13 @@ public class appleTree : MonoBehaviour
 
         changeDirChance = changeDirChance + (changeDirChance * (waveProgressionPercentage / waveCount));
 
+        Invoke("startNextWave", 3);
+    }
+
+    void startNextWave()
+    {
+        CancelInvoke("dropApple");
+
         waveCount++;
         passiveWave++;
 
@@ -107,13 +114,18 @@ public class appleTree : MonoBehaviour
         }
 
         ScoreManager.scoreManager.addWave();
-        resetAppleDrop();
+
+        applesDropped = 0;
+
+        Invoke("dropApple", 2);
     }
 
     public void resetAppleDrop()
     {
         CancelInvoke("dropApple");
-        Invoke("dropApple", 4);
+        applesDropped = 0;
+
+        Invoke("dropApple", 2);
     }
 
     void Update()
