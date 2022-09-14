@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager scoreManager;
     private int score;
+    private int tempScore;
 
     [Header("Set Dynamically")]
     public Text scoreTxt;
@@ -32,7 +33,8 @@ public class ScoreManager : MonoBehaviour
 
     public void addScore(int addScore)
     {
-        int score = int.Parse(scoreTxt.text);
+        tempScore += addScore;
+
         score += addScore;
 
         scoreTxt.text = score.ToString();
@@ -43,9 +45,20 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void addWave()
+    public void consolodateScore()
     {
-        waveCount++;
+        tempScore = 0;
+    }
+
+    public void lostLife()
+    {
+        score -= tempScore;
+        scoreTxt.text = score.ToString();
+    }
+
+    public void addWave(int value)
+    {
+        waveCount += value;
         waveCountTxt.text = "Wave: " + waveCount;
     }
 }

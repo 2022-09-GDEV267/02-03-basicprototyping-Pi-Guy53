@@ -46,7 +46,7 @@ public class appleTree : MonoBehaviour
 
         originalProgressionScore = waveProggressionScore;
 
-        ScoreManager.scoreManager.addWave();
+        ScoreManager.scoreManager.addWave(1);
     }
 
     void dropApple()
@@ -78,7 +78,6 @@ public class appleTree : MonoBehaviour
             CancelInvoke("dropApple");
 
             newWave();
-            applesDropped = 0;
         }
     }
 
@@ -113,7 +112,8 @@ public class appleTree : MonoBehaviour
             Camera.main.GetComponent<applePicker>().addLife();
         }
 
-        ScoreManager.scoreManager.addWave();
+        ScoreManager.scoreManager.addWave(1);
+        ScoreManager.scoreManager.consolodateScore();
 
         applesDropped = 0;
 
@@ -123,6 +123,11 @@ public class appleTree : MonoBehaviour
     public void resetAppleDrop()
     {
         CancelInvoke("dropApple");
+
+        ScoreManager.scoreManager.lostLife();
+        waveCount--;
+        passiveWave--;
+        ScoreManager.scoreManager.addWave(-1);
         applesDropped = 0;
 
         Invoke("dropApple", 2);
