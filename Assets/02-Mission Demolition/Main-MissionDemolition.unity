@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 258892848}
+  - component: {fileID: 258892849}
   m_Layer: 0
   m_Name: lanuch transform
   m_TagString: Untagged
@@ -154,6 +155,18 @@ Transform:
   m_Father: {fileID: 532116947}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!122 &258892849
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258892847}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4290690750
+  m_Size: 2
 --- !u!1 &532116942
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +181,7 @@ GameObject:
   - component: {fileID: 532116944}
   - component: {fileID: 532116943}
   - component: {fileID: 532116948}
+  - component: {fileID: 532116949}
   m_Layer: 0
   m_Name: slingshot
   m_TagString: Untagged
@@ -1602,6 +1616,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 4, z: 0}
+--- !u!114 &532116949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532116942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772df8d43f7d34fac83b5e3e25f79591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2411402401119588940, guid: e08a6a91fd8bc40c4b7ed52843b753c5, type: 3}
+  velocityMulti: 8
+  launchPoint: {fileID: 258892848}
 --- !u!1 &792234105
 GameObject:
   m_ObjectHideFlags: 0
