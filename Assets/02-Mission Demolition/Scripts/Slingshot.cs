@@ -19,8 +19,11 @@ public class Slingshot : MonoBehaviour
 
     private Vector3 mousePos2D, mousePos3D, mouseDelta;
 
-    public Transform endPoint;
-    private Transform eye;
+
+    public GameObject aimTargetPref;
+    public int numOfAimT;
+    private List<GameObject> aimTList;
+    private float aimT;
 
     private void Start()
     {
@@ -29,9 +32,12 @@ public class Slingshot : MonoBehaviour
         launchPoint.gameObject.SetActive(false);
         maxMagnitude = GetComponent<SphereCollider>().radius;
 
-        eye = new GameObject("eye").transform;
-        eye.transform.position = transform.position;
-        eye.transform.parent = transform;
+        for (int i = 0; i < numOfAimT; i++)
+        {
+            GameObject thisAim = Instantiate(aimTargetPref);
+            aimTList.Add(thisAim);
+            thisAim.SetActive(false);
+        }
     }
 
     private void Update()
@@ -90,9 +96,23 @@ public class Slingshot : MonoBehaviour
 
     void targeting()
     {
-        eye.transform.position = thisProjectile.transform.position;
-        eye.transform.LookAt(launchPos);
 
-        endPoint.transform.position = eye.transform.position + (endPoint.transform.right * ((Mathf.Deg2Rad * eye.eulerAngles.x) * ((velocityMulti * velocityMulti) / 10)));
+        aimT += Time.deltaTime;
+        if (aimT > .5f)
+        {
+            for (int i = 0; i < aimTList.Count; i++)
+            {
+                if (!aimTList[i].activeInHierarchy)
+                {
+                    aimTList[i].SetActive(true);
+                    aimTList[i].transform.position = thisProjectile.transform.position;
+                    aimTList[i].GetComponent<Rigidbody>().AddForce(-mouseDelta * velocityMulti, ForceMode.Impulse);
+
+                    i = aimTList.Count;
+                }
+            }
+
+            aimT = 0;
+        }
     }
 }
