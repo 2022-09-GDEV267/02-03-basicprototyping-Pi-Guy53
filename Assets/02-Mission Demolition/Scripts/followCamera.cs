@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class followCamera : MonoBehaviour
 {
+    public float easing = .05f;
+
     public static GameObject PoI;
 
     private float camZ;
@@ -19,6 +21,8 @@ public class followCamera : MonoBehaviour
         if(PoI != null)
         {
             destination = PoI.transform.position;
+            destination = Vector3.Lerp(transform.position, destination, easing);
+
             destination.z = camZ;
             transform.position = destination;
         }

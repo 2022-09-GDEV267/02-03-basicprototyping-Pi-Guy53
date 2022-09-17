@@ -2018,12 +2018,8 @@ MonoBehaviour:
   m_VersionIndex: 869
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 4
-    b: 6
-  - a: 3
-    b: 2
-  m_SelectedVertices: 04000000060000000300000002000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &1462593369
 Transform:
   m_ObjectHideFlags: 0
