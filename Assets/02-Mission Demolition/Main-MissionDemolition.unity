@@ -2142,7 +2142,7 @@ GameObject:
   - component: {fileID: 1666479476}
   - component: {fileID: 1666479475}
   m_Layer: 0
-  m_Name: clound anquore
+  m_Name: cloud anquore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

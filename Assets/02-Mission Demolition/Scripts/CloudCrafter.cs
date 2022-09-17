@@ -20,7 +20,7 @@ public class CloudCrafter : MonoBehaviour
 		cloudInstances = new GameObject[numClouds];
 
 		// find the CloudAnchor parent GameObject
-		GameObject anchor = GameObject.Find("CloudAnchor");
+		GameObject anchor = gameObject;//GameObject.Find("CloudAnchor");
 
 		// iterate through and make clouds
 		GameObject cloud;
