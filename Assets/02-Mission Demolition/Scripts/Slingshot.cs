@@ -20,6 +20,7 @@ public class Slingshot : MonoBehaviour
     private Vector3 mousePos2D, mousePos3D, mouseDelta;
 
     public Transform endPoint;
+    private Transform eye;
 
     private void Start()
     {
@@ -27,6 +28,10 @@ public class Slingshot : MonoBehaviour
 
         launchPoint.gameObject.SetActive(false);
         maxMagnitude = GetComponent<SphereCollider>().radius;
+
+        eye = new GameObject("eye").transform;
+        eye.transform.position = transform.position;
+        eye.transform.parent = transform;
     }
 
     private void Update()
@@ -46,6 +51,8 @@ public class Slingshot : MonoBehaviour
             }
 
             thisProjectile.transform.position = launchPos + mouseDelta;
+
+            targeting();
 
             if (Input.GetMouseButtonUp(0))
             {
@@ -81,4 +88,11 @@ public class Slingshot : MonoBehaviour
         projectileRb.isKinematic = true;
     }
 
+    void targeting()
+    {
+        eye.transform.position = thisProjectile.transform.position;
+        eye.transform.LookAt(launchPos);
+
+        endPoint.transform.position = eye.transform.position + (endPoint.transform.right * ((Mathf.Deg2Rad * eye.eulerAngles.x) * ((velocityMulti * velocityMulti) / 10)));
+    }
 }

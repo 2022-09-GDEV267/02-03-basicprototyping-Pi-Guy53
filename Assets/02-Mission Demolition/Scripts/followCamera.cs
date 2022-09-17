@@ -12,6 +12,8 @@ public class followCamera : MonoBehaviour
     private float camZ;
     private Vector3 destination;
 
+    Rigidbody pRb;
+
     private void Start()
     {
         camZ = transform.position.z;
@@ -29,7 +31,11 @@ public class followCamera : MonoBehaviour
 
             if (PoI.CompareTag("Projectile"))
             {
-                if (PoI.GetComponent<Rigidbody>().IsSleeping())
+                pRb = PoI.GetComponent<Rigidbody>();
+
+                pRb.sleepThreshold = .05f;
+
+                if (pRb.IsSleeping())
                 {
                     PoI = null;
                     return;
