@@ -15,9 +15,11 @@ public class Slingshot : MonoBehaviour
     private GameObject thisProjectile;
     private Rigidbody projectileRb;
 
-    float maxMagnitude;
+    float maxMagnitude;//
 
     private Vector3 mousePos2D, mousePos3D, mouseDelta;
+
+    public Transform endPoint;
 
     private void Start()
     {
@@ -50,7 +52,7 @@ public class Slingshot : MonoBehaviour
                 aimingMode = false;
 
                 projectileRb.isKinematic = false;
-                projectileRb.velocity = -mouseDelta * velocityMulti;
+                projectileRb.AddForce(-mouseDelta * velocityMulti, ForceMode.Impulse);
 
                 followCamera.PoI = thisProjectile;
 
