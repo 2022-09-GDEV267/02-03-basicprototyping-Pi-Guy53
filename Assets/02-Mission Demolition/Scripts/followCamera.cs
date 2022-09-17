@@ -19,18 +19,31 @@ public class followCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(PoI != null)
+        if(PoI == null)
+        {
+            destination = Vector3.zero;
+        }
+        else
         {
             destination = PoI.transform.position;
 
-            destination.x = Mathf.Max(minXY.x, destination.x);
-            destination.y = Mathf.Max(minXY.y, destination.y);
-            destination = Vector3.Lerp(transform.position, destination, easing);
-
-            destination.z = camZ;
-            transform.position = destination;
-
-            Camera.main.orthographicSize = destination.y + 10;
+            if (PoI.CompareTag("Projectile"))
+            {
+                if (PoI.GetComponent<Rigidbody>().IsSleeping())
+                {
+                    PoI = null;
+                    return;
+                }
+            }
         }
+
+        destination.x = Mathf.Max(minXY.x, destination.x);
+        destination.y = Mathf.Max(minXY.y, destination.y);
+        destination = Vector3.Lerp(transform.position, destination, easing);
+
+        destination.z = camZ;
+        transform.position = destination;
+
+        Camera.main.orthographicSize = destination.y + 10;
     }
 }
