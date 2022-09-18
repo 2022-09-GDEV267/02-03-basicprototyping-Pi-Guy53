@@ -6,7 +6,7 @@ public class Targeting : MonoBehaviour
 {
     private void OnEnable()
     {
-        Invoke("destroyThis", 1.5f);
+        Invoke("destroyThis", 2);
     }
 
     private void destroyThis()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
+    private static Slingshot S;
+
     public GameObject projectilePrefab;
     public float velocityMulti;
 
@@ -15,7 +17,7 @@ public class Slingshot : MonoBehaviour
     private GameObject thisProjectile;
     private Rigidbody projectileRb;
 
-    float maxMagnitude;//
+    float maxMagnitude;
 
     private Vector3 mousePos2D, mousePos3D, mouseDelta;
 
@@ -25,6 +27,26 @@ public class Slingshot : MonoBehaviour
     private List<GameObject> aimTList;
     private float aimT;
 
+    public static Vector3 LANUCH_POS
+    {
+        get
+        {
+            if(S== null)
+            {
+                return Vector3.zero;
+            }
+            else
+            {
+                return S.launchPos;
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        S = this;
+    }
+
     private void Start()
     {
         launchPos = launchPoint.position;
@@ -32,9 +54,14 @@ public class Slingshot : MonoBehaviour
         launchPoint.gameObject.SetActive(false);
         maxMagnitude = GetComponent<SphereCollider>().radius;
 
+        GameObject thisAim;
+
+        aimTList = new List<GameObject>();
+
         for (int i = 0; i < numOfAimT; i++)
         {
-            GameObject thisAim = Instantiate(aimTargetPref);
+            thisAim = Instantiate(aimTargetPref, transform.position, transform.rotation);
+
             aimTList.Add(thisAim);
             thisAim.SetActive(false);
         }
@@ -96,23 +123,26 @@ public class Slingshot : MonoBehaviour
 
     void targeting()
     {
-
         aimT += Time.deltaTime;
-        if (aimT > .5f)
+
+        if (aimTList.Count == numOfAimT)
         {
-            for (int i = 0; i < aimTList.Count; i++)
+            if (aimT > .25f)
             {
-                if (!aimTList[i].activeInHierarchy)
+                for (int i = 0; i < aimTList.Count; i++)
                 {
-                    aimTList[i].SetActive(true);
-                    aimTList[i].transform.position = thisProjectile.transform.position;
-                    aimTList[i].GetComponent<Rigidbody>().AddForce(-mouseDelta * velocityMulti, ForceMode.Impulse);
+                    if (!aimTList[i].activeInHierarchy)
+                    {
+                        aimTList[i].SetActive(true);
+                        aimTList[i].transform.position = thisProjectile.transform.position;
+                        aimTList[i].GetComponent<Rigidbody>().AddForce(-mouseDelta * velocityMulti, ForceMode.Impulse);
 
-                    i = aimTList.Count;
+                        i = aimTList.Count;
+                    }
                 }
-            }
 
-            aimT = 0;
+                aimT = 0;
+            }
         }
     }
 }

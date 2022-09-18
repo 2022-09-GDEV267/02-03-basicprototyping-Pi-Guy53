@@ -33,7 +33,7 @@ public class followCamera : MonoBehaviour
             {
                 pRb = PoI.GetComponent<Rigidbody>();
 
-                pRb.sleepThreshold = .05f;
+                pRb.sleepThreshold = .1f;
 
                 if (pRb.IsSleeping())
                 {
