@@ -4,126 +4,219 @@ using UnityEngine;
 
 public class projectileLine : MonoBehaviour
 {
-    public static projectileLine S;
 
-    public float minDist = .1f;
+    static public projectileLine S; // Singleton
 
-    private LineRenderer lineR;
+
+    [Header("Set in Inspector")]
+
+    public float minDist = 0.1f;
+
+
+    private LineRenderer line;
+
     private GameObject _poi;
+
     private List<Vector3> points;
 
-    private void Start()
+
+    void Awake()
     {
-        S = this;
 
-        lineR = GetComponent<LineRenderer>();
-        lineR.enabled = false;
+        S = this;// Set the singleton
 
-        points = new List<Vector3>();
+        // Get a reference to the LineRenderer
+
+        line = GetComponent<LineRenderer>();
+
+        // Disable the LineRenderer until it's needed
+
+        line.enabled = false;
+
+        // Initialize the points List
+
+        points = new List<Vector3>();
+
     }
 
-    public GameObject poi
+
+    // This is a property (that is, a method masquerading as a field)
+
+    public GameObject poi
     {
+
         get
         {
-            return poi;
+
+            return (_poi);
+
         }
 
         set
         {
+
             _poi = value;
 
-            if(_poi != null)
+            if (_poi != null)
             {
-                lineR.enabled = false;
+
+                // When _poi is set to something new, it resets everything
+
+                line.enabled = false;
+
                 points = new List<Vector3>();
+
                 AddPoint();
+
             }
+
         }
+
     }
 
-    public void Clear()
+
+    // This can be used to clear the line directly
+
+    public void Clear()
     {
+
         _poi = null;
-        lineR.enabled = false;
+
+        line.enabled = false;
+
         points = new List<Vector3>();
+
     }
 
     public void AddPoint()
     {
-        Vector3 pt = _poi.transform.position;
-        if(points.Count > 0 && (pt - lastPoint).magnitude < minDist)
+
+        // This is called to add a point to the line
+
+        Vector3 pt = _poi.transform.position;
+
+        if (points.Count > 0 && (pt - lastPoint).magnitude < minDist)
         {
-            return;
+
+            // If the point isn't far enough from the last point, it returns
+
+            return;
+
         }
 
-        if( points.Count == 0)
-        {
-            Vector3 launchPosDiff = pt - Slingshot.LANUCH_POS;
+        if (points.Count == 0)
+        { // If this is the launch point...
 
-            points.Add(pt + launchPosDiff);
+            Vector3 launchPosDiff = pt - Slingshot.LANUCH_POS; // To be defined
+
+            // ...it adds an extra bit of line to aid aiming later
+
+            points.Add(pt + launchPosDiff);
 
             points.Add(pt);
-            lineR.positionCount = 2;
 
-            lineR.SetPosition(0, points[0]);
-            lineR.SetPosition(1, points[1]);
+            line.positionCount = 2;
 
-            lineR.enabled = true;
+            // Sets the first two points
+
+            line.SetPosition(0, points[0]);
+
+            line.SetPosition(1, points[1]);
+
+            // Enables the LineRenderer
+
+            line.enabled = true;
+
         }
         else
         {
-            points.Add(pt);
-            lineR.positionCount = points.Count;
-            lineR.SetPosition(points.Count - 1, lastPoint);
-            lineR.enabled = true;
+
+            // Normal behavior of adding a point
+
+            points.Add(pt);
+
+            line.positionCount = points.Count;
+
+            line.SetPosition(points.Count - 1, lastPoint);
+
+            line.enabled = true;
+
         }
+
     }
 
-    public Vector3 lastPoint
+
+    // Returns the location of the most recently added point
+
+    public Vector3 lastPoint
     {
+
         get
         {
-            if(points == null)
+
+            if (points == null)
             {
-                return Vector3.zero;
+
+                // If there are no points, returns Vector3.zero
+
+                return (Vector3.zero);
+
             }
-            else
-            {
-                return (points[points.Count - 1]);
-            }
+
+            return (points[points.Count - 1]);
+
         }
+
     }
 
-    private void FixedUpdate()
+
+    void FixedUpdate()
     {
+
         if (poi == null)
         {
-            if (followCamera.PoI != null)
+
+            // If there is no poi, search for one
+
+            if (followCamera.PoI != null)
             {
-                if (followCamera.PoI.CompareTag("Projectile"))
+
+                if (followCamera.PoI.tag == "Projectile")
                 {
+
                     poi = followCamera.PoI;
-                    print("!null");
+
                 }
                 else
                 {
-                    return;
-                }
+
+                    return; // Return if we didn't find a poi
+
+                }
+
             }
             else
             {
-                return;
-            }
+
+                return; // Return if we didn't find a poi
+
+            }
+
         }
 
-        AddPoint();
+        // If there is a poi, it's loc is added every FixedUpdate
 
-        if(followCamera.PoI == null)
+        AddPoint();
+
+        if (followCamera.PoI == null)
         {
-            poi = null;
 
-            print("IS Null");
+            // Once FollowCam.POI is null, make the local poi nulll too
+
+            poi = null;
+
         }
+
     }
+
 }
