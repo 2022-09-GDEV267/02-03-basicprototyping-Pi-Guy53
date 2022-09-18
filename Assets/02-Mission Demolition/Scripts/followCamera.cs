@@ -50,6 +50,6 @@ public class followCamera : MonoBehaviour
         destination.z = camZ;
         transform.position = destination;
 
-        Camera.main.orthographicSize = destination.y + 10;
+        Camera.main.orthographicSize = destination.y + 12;
     }
 }

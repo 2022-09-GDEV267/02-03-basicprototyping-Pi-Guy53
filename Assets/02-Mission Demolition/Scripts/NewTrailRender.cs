@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NewTrailRender : MonoBehaviour
 {
+    public static NewTrailRender S;
+
     public float minDist = .1f;
 
     private Vector3 lastPoint;
@@ -13,54 +15,51 @@ public class NewTrailRender : MonoBehaviour
 
     private bool newLine = false;
 
+    private void Awake()
+    {
+        S = this;
+        lineR = GetComponent<LineRenderer>();
+    }
+
     private void Start()
     {
-        lineR = GetComponent<LineRenderer>();
-
         points = new List<Vector3>();
 
         lastPoint = Slingshot.LANUCH_POS;
-
-        StartCoroutine("placePoints");
     }
 
-    IEnumerator placePoints()
+    private void FixedUpdate()
     {
-        while (true)
+        if (followCamera.PoI != null && followCamera.PoI.CompareTag("Projectile"))
         {
-            if(followCamera.PoI != null)
+            if (newLine)
             {
-                if(newLine)
-                {
-                    clearLine();
-                    newLine = false;
-                }
-
-                lineR.enabled = true;
-
-                if((followCamera.PoI.transform.position - lastPoint).magnitude > minDist)
-                {
-                    points.Add(followCamera.PoI.transform.position);
-                    lastPoint = followCamera.PoI.transform.position;
-                }
-
-                lineR.positionCount = points.Count;
-
-                for(int i = 0; i < points.Count; i++)
-                {
-                    lineR.SetPosition(i, points[i]);
-                }
-            }
-            else
-            {
-                newLine = true;
+                clearLine();
+                newLine = false;
             }
 
-            yield return new WaitForSeconds(.1f);
+            lineR.enabled = true;
+
+            if ((followCamera.PoI.transform.position - lastPoint).magnitude > minDist)
+            {
+                points.Add(followCamera.PoI.transform.position);
+                lastPoint = followCamera.PoI.transform.position;
+            }
+
+            lineR.positionCount = points.Count;
+
+            for (int i = 0; i < points.Count; i++)
+            {
+                lineR.SetPosition(i, points[i]);
+            }
+        }
+        else
+        {
+            newLine = true;
         }
     }
 
-    void clearLine()
+    public void clearLine()
     {
         lineR.enabled = false;
 

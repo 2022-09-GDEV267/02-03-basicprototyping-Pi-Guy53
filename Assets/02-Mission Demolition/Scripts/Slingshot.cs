@@ -95,8 +95,9 @@ public class Slingshot : MonoBehaviour
                 projectileRb.AddForce(-mouseDelta * velocityMulti, ForceMode.Impulse);
 
                 followCamera.PoI = thisProjectile;
-
                 thisProjectile = null;
+
+                MissionDemolition.shotFired();
             }
         }
     }
