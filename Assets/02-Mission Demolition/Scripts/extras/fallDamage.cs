@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class fallDamage : MonoBehaviour
+{
+    public float health;
+
+    private float damage;
+    private Rigidbody rb;
+
+    public GameObject destroyEffects;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
+    {
+        damage = Mathf.Abs(rb.velocity.magnitude);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Projectile"))
+        {
+            damage += collision.gameObject.GetComponent<projectileDamage>().damage;
+        }
+
+        health -= damage;
+
+        if (health < 0)
+        {
+            GameObject theseEffects = Instantiate(destroyEffects, transform.position, transform.rotation);
+
+            Destroy(gameObject);
+        }
+    }
+}

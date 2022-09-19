@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2411402401119588942}
   - component: {fileID: 2411402401119588943}
   - component: {fileID: 4083778440918860691}
+  - component: {fileID: 3534827675280118171}
   m_Layer: 0
   m_Name: projectile
   m_TagString: Projectile
@@ -2316,3 +2317,16 @@ Halo:
     serializedVersion: 2
     rgba: 4278190335
   m_Size: 0.55
+--- !u!114 &3534827675280118171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411402401119588940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c584e4ec5da4bbd9d4810926d14329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0

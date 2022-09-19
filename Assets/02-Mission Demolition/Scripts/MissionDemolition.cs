@@ -19,6 +19,8 @@ public class MissionDemolition : MonoBehaviour
     private int level;
     public int shotsTaken;
 
+    private GameObject currentCastle;
+
     public GameMode mode = GameMode.idle;
     private string showing = "Show Slingshot";
 
@@ -38,10 +40,9 @@ public class MissionDemolition : MonoBehaviour
 
     void startLevel()
     {
-        for (int i = 0; i < castles.Length; i++)
+        if(currentCastle != null)
         {
-            castles[i].SetActive(false);
-            castles[i].transform.position = castlePos;
+            Destroy(currentCastle);
         }
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Projectile");
@@ -50,7 +51,7 @@ public class MissionDemolition : MonoBehaviour
             Destroy(pTemp);
         }
 
-        castles[level].SetActive(true);
+        currentCastle = Instantiate(castles[level], castlePos, transform.rotation);
 
         shotsTaken = 0;
         switchView("Show Both");
@@ -65,7 +66,7 @@ public class MissionDemolition : MonoBehaviour
 
     void UpdateGUI()
     {
-        levelTxt.text = "Level: " + level + 1 + " of " + castles.Length;
+        levelTxt.text = "Level: " + (level + 1) + " of " + castles.Length;
         shotsTxt.text = "Shots Taken: " + shotsTaken;
     }
 
@@ -85,6 +86,7 @@ public class MissionDemolition : MonoBehaviour
     void NextLevel()
     {
         level++;
+
         if (level == castles.Length)
         {
             level = 0;

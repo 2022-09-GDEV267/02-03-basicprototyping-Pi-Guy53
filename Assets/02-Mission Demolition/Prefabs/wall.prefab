@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3624025635176556215}
   - component: {fileID: 146864327303445157}
   - component: {fileID: 6145463140357599297}
+  - component: {fileID: -7603818405332610220}
   m_Layer: 0
   m_Name: wall
   m_TagString: Untagged
@@ -373,3 +374,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494e2acd07bd54e60a895e9e8fbed94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7603818405332610220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624025635176556214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f46ea01a091435e924e36bfeca66bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  destroyEffects: {fileID: 164534334940945890, guid: ad285c90687ab4319bfd13cc868934ff, type: 3}
