@@ -27,6 +27,8 @@ public class Slingshot : MonoBehaviour
     private List<GameObject> aimTList;
     private float aimT;
 
+    public Trebuchet catapult;
+
     public static Vector3 LANUCH_POS
     {
         get
@@ -98,6 +100,7 @@ public class Slingshot : MonoBehaviour
                 thisProjectile = null;
 
                 MissionDemolition.shotFired();
+                catapult.Shoot();
             }
         }
     }
