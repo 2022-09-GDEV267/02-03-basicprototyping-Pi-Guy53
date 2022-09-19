@@ -386,5 +386,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f46ea01a091435e924e36bfeca66bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 70
   destroyEffects: {fileID: 164534334940945890, guid: ad285c90687ab4319bfd13cc868934ff, type: 3}

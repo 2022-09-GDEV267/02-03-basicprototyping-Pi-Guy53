@@ -27,6 +27,13 @@ public class fallDamage : MonoBehaviour
         {
             damage += collision.gameObject.GetComponent<projectileDamage>().damage;
         }
+        else
+        {
+            if(collision.gameObject.GetComponent<fallDamage>())
+            {
+                damage += collision.gameObject.GetComponent<fallDamage>().damage;
+            }
+        }
 
         health -= damage;
 
