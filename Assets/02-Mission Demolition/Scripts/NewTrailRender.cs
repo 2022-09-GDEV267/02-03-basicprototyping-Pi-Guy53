@@ -15,6 +15,9 @@ public class NewTrailRender : MonoBehaviour
 
     private bool newLine = false;
 
+    private Transform poi;
+    private Transform oldPoi;
+
     private void Awake()
     {
         S = this;
@@ -30,7 +33,19 @@ public class NewTrailRender : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (followCamera.PoI != null && followCamera.PoI.CompareTag("Projectile"))
+        if(followCamera.PoI != null && followCamera.PoI.CompareTag("Projectile"))
+        {
+            poi = followCamera.PoI.transform;
+
+            if(oldPoi != null && poi != oldPoi)
+            {
+                newLine = true;
+            }
+
+            oldPoi = poi;
+        }
+
+        if (poi != null)
         {
             if (newLine)
             {
@@ -40,10 +55,10 @@ public class NewTrailRender : MonoBehaviour
 
             lineR.enabled = true;
 
-            if ((followCamera.PoI.transform.position - lastPoint).magnitude > minDist)
+            if ((poi.position - lastPoint).magnitude > minDist)
             {
-                points.Add(followCamera.PoI.transform.position);
-                lastPoint = followCamera.PoI.transform.position;
+                points.Add(poi.position);
+                lastPoint = poi.position;
             }
 
             lineR.positionCount = points.Count;
@@ -52,10 +67,6 @@ public class NewTrailRender : MonoBehaviour
             {
                 lineR.SetPosition(i, points[i]);
             }
-        }
-        else
-        {
-            newLine = true;
         }
     }
 

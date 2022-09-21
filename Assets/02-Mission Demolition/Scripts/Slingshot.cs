@@ -85,7 +85,10 @@ public class Slingshot : MonoBehaviour
                 mouseDelta *= maxMagnitude;
             }
 
-            thisProjectile.transform.position = launchPos + mouseDelta;
+            if (thisProjectile != null)
+            {
+                thisProjectile.transform.position = launchPos + mouseDelta;
+            }
 
             targeting();
 
