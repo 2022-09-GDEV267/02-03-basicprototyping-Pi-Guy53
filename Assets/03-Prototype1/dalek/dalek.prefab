@@ -149,7 +149,6 @@ GameObject:
   - component: {fileID: 4304993652919478668}
   - component: {fileID: 4304993652919478669}
   - component: {fileID: 4304993652919478706}
-  - component: {fileID: 4304993652919478707}
   m_Layer: 0
   m_Name: head light
   m_TagString: Untagged
@@ -626,20 +625,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4304993652919478705}
-  m_Mesh: {fileID: 0}
---- !u!64 &4304993652919478707
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4304993652919478705}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &4304993652960228314
 GameObject:
@@ -27013,7 +26998,6 @@ GameObject:
   - component: {fileID: 4304993654146204933}
   - component: {fileID: 4304993654146204938}
   - component: {fileID: 4304993654146204939}
-  - component: {fileID: 4304993654146204936}
   m_Layer: 0
   m_Name: head light (1)
   m_TagString: Untagged
@@ -27490,20 +27474,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4304993654146204942}
-  m_Mesh: {fileID: 0}
---- !u!64 &4304993654146204936
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4304993654146204942}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &4304993654219826383
 GameObject:

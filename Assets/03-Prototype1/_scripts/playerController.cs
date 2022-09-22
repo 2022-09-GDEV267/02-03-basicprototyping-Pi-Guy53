@@ -12,6 +12,7 @@ public class playerController : MonoBehaviour
     public GameObject basePiece;
     public GameObject body;
     public GameObject head;
+    public GameObject eyeStalk;
 
     public GameObject weapon;
 
@@ -19,6 +20,12 @@ public class playerController : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 direction;
+    public float rotationalLerp = .05f;
+
+    private Vector3 mousePos3D;
+    private RaycastHit hit;
+
+    public LayerMask ignoreMouseLayer;
 
     private void Start()
     {
@@ -36,6 +43,31 @@ public class playerController : MonoBehaviour
 
         direction = transform.forward * y + transform.right * x;
 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 100f, ignoreMouseLayer))
+        {
+            mousePos3D = hit.point;
+        }
+
+        eye.transform.LookAt(mousePos3D);
+
+
+
+        //movement
         rb.AddForce(direction.normalized * speed);
+
+        //resets the direction if no input
+        if (direction.magnitude == 0)
+        {
+            direction = basePiece.transform.forward;
+        }
+
+        //model rotations/positions
+        basePiece.transform.rotation = Quaternion.Lerp(basePiece.transform.rotation, Quaternion.LookRotation(direction.normalized), rotationalLerp);
+
+        head.transform.localRotation = Quaternion.Euler(0, eye.transform.localEulerAngles.y, 0);
+        eyeStalk.transform.localRotation = Quaternion.Euler(eye.transform.localEulerAngles.x, 0, 0);
     }
+
 }
