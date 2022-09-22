@@ -60,11 +60,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.progrids": {
-      "version": "3.0.3-preview.6",
+      "version": "3.0.3-preview.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.settings-manager": "1.0.2"
+        "com.unity.settings-manager": "1.0.1"
       },
       "url": "https://packages.unity.com"
     },
