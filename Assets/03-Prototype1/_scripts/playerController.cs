@@ -43,6 +43,15 @@ public class playerController : MonoBehaviour
 
         direction = transform.forward * y + transform.right * x;
 
+        //movement
+        rb.velocity = (direction * speed);
+
+        //resets the direction if no input
+        if (direction.magnitude == 0)
+        {
+            direction = basePiece.transform.forward;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, 100f, ignoreMouseLayer))
@@ -52,17 +61,6 @@ public class playerController : MonoBehaviour
 
         eye.transform.LookAt(mousePos3D);
 
-
-
-        //movement
-        rb.AddForce(direction.normalized * speed);
-
-        //resets the direction if no input
-        if (direction.magnitude == 0)
-        {
-            direction = basePiece.transform.forward;
-        }
-
         //model rotations/positions
         basePiece.transform.rotation = Quaternion.Lerp(basePiece.transform.rotation, Quaternion.LookRotation(direction.normalized), rotationalLerp);
 
@@ -70,4 +68,8 @@ public class playerController : MonoBehaviour
         eyeStalk.transform.localRotation = Quaternion.Euler(eye.transform.localEulerAngles.x, 0, 0);
     }
 
+    private void FixedUpdate()
+    {
+
+    }
 }

@@ -60,13 +60,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.progrids": {
-      "version": "3.0.3-preview.6",
+      "version": "file:/Users/John/Desktop/ProGrids",
       "depth": 0,
-      "source": "registry",
+      "source": "local",
       "dependencies": {
         "com.unity.settings-manager": "1.0.2"
-      },
-      "url": "https://packages.unity.com"
+      }
     },
     "com.unity.services.core": {
       "version": "1.4.0",
