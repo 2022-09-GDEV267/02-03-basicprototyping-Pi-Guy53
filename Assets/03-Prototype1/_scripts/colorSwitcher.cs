@@ -13,7 +13,10 @@ public class colorSwitcher : MonoBehaviour
     public Material armorPlate;
     public Material shieldNode;
 
-    private void Start()
+    public GameObject body;
+    public GameObject shields;
+
+    private void Start()//
     {
         if (PlayerPrefs.HasKey("ArmorColorInt"))
         {
