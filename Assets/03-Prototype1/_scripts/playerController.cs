@@ -39,7 +39,7 @@ public class playerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         eye = new GameObject("eye");
-        eye.transform.position = transform.position;
+        eye.transform.position = eyeStalk.transform.position;
         eye.transform.parent = transform;
 
         cam = Camera.main.gameObject;
