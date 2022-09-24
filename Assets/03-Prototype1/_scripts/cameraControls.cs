@@ -38,7 +38,7 @@ public class cameraControls : MonoBehaviour
 
         transform.Rotate(0, x * xSensitivity, 0);
         */
-        y = Input.GetAxis("Mouse Y");
+        //y = Input.GetAxis("Mouse Y");
 
         cam.transform.Rotate(-y * ySensitivity, 0, 0);
 
