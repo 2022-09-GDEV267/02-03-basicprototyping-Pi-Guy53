@@ -12,6 +12,9 @@ public class cameraControls : MonoBehaviour
     private playerController player;
     private GameObject cam;
 
+
+    public bool useBaseForCamera;
+
     private void Start()
     {
         player = GameObject.FindObjectOfType<playerController>();
@@ -36,13 +39,20 @@ public class cameraControls : MonoBehaviour
             x = Input.GetAxis("Mouse X");
         }
 
+        y = Input.GetAxis("Mouse Y");
+
         transform.Rotate(0, x * xSensitivity, 0);
-        */
-        //y = Input.GetAxis("Mouse Y");
-
         cam.transform.Rotate(-y * ySensitivity, 0, 0);
+        */
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, player.basePiece.transform.rotation, lerpSpeed);
+        if (useBaseForCamera)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, player.basePiece.transform.rotation, lerpSpeed);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, player.body.transform.rotation, lerpSpeed);
+        }
 
         Cursor.lockState = CursorLockMode.Confined;
     }
