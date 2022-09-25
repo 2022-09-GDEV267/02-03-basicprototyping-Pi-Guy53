@@ -94,9 +94,4 @@ public class playerController : MonoBehaviour
         head.transform.localRotation = Quaternion.Euler(0, eye.transform.localEulerAngles.y, 0);
         eyeStalk.transform.localRotation = Quaternion.Euler(eye.transform.localEulerAngles.x, 0, 0);
     }
-
-    private void FixedUpdate()
-    {
-
-    }
 }
