@@ -16,7 +16,15 @@ public class colorSwitcher : MonoBehaviour
     public GameObject body;
     public GameObject shields;
 
-    private void Start()//
+    private Vector3 originalPos;
+
+    public float switchSpeed;
+    public float switchDistance;
+
+    private bool switchingArmor, switchingShields;
+    private float switchArmorCount, switchShieldsCount;
+
+    private void Awake()
     {
         if (PlayerPrefs.HasKey("ArmorColorInt"))
         {
@@ -25,44 +33,102 @@ public class colorSwitcher : MonoBehaviour
 
         if (PlayerPrefs.HasKey("ShieldColorInt"))
         {
-            armorInt = PlayerPrefs.GetInt("ShieldColorInt");
+            shieldInt = PlayerPrefs.GetInt("ShieldColorInt");
         }
 
         PlayerPrefs.SetInt("ArmorColorInt", armorInt);
         PlayerPrefs.SetInt("ShieldColorInt", shieldInt);
+    }
+
+    private void Start()
+    {
+        originalPos = body.transform.position;
+    }
+
+    private void Update()
+    {
+        if (switchingArmor)
+        {
+            switchArmorCount += Time.deltaTime * switchSpeed;
+
+            body.transform.position += transform.right * Time.deltaTime * -switchSpeed;
+
+            if (switchArmorCount > switchDistance * 2)
+            {
+                switchingArmor = false;
+                body.transform.position = originalPos;
+            }
+            else if (switchArmorCount > switchDistance + (switchSpeed * Time.deltaTime))
+            { }
+            else if (switchArmorCount > switchDistance)
+            {
+                body.transform.position = originalPos + transform.right * switchDistance;
+                armorPlate.color = armorColor[armorInt];
+            }
+
+        }
+
+        if (switchingShields)
+        {
+            switchShieldsCount += Time.deltaTime * switchSpeed;
+
+            shields.transform.position += transform.right * Time.deltaTime * -switchSpeed;
+
+            if (switchShieldsCount > switchDistance * 2)
+            {
+                switchingShields = false;
+                shields.transform.position = originalPos;
+            }
+            else if (switchShieldsCount > switchDistance + (switchSpeed * Time.deltaTime))
+            { }
+            else if (switchShieldsCount > switchDistance)
+            {
+                shields.transform.position = originalPos + transform.right * switchDistance;
+                shieldNode.color = shieldColor[shieldInt];
+            }
+
+        }
     }
 
     [ContextMenu("Switch Armor Color")]
     public void SwitchArmorColor()
     {
-        if(armorInt < armorColor.Length - 1)
+        if (!switchingArmor)
         {
-            armorInt++;
-        }
-        else
-        {
-            armorInt = 0;
-        }
+            if (armorInt < armorColor.Length - 1)
+            {
+                armorInt++;
+            }
+            else
+            {
+                armorInt = 0;
+            }
 
-        PlayerPrefs.SetInt("ArmorColorInt", armorInt);
+            PlayerPrefs.SetInt("ArmorColorInt", armorInt);
 
-        armorPlate.color = armorColor[armorInt];
+            switchingArmor = true;
+            switchArmorCount = 0;
+        }
     }
 
     [ContextMenu("Switch Shield Color")]
     public void SwitchShieldColor()
     {
-        if (shieldInt < shieldColor.Length - 1)
+        if (!switchingShields)
         {
-            shieldInt++;
-        }
-        else
-        {
-            shieldInt = 0;
-        }
+            if (shieldInt < shieldColor.Length - 1)
+            {
+                shieldInt++;
+            }
+            else
+            {
+                shieldInt = 0;
+            }
 
-        PlayerPrefs.SetInt("ShieldColorInt", shieldInt);
+            PlayerPrefs.SetInt("ShieldColorInt", shieldInt);
 
-        shieldNode.color = shieldColor[shieldInt];
+            switchingShields = true;
+            switchShieldsCount = 0;
+        }
     }
 }
