@@ -20,7 +20,7 @@ public class destructableObject : MonoBehaviour
         }
     }
 
-    void destroyed()
+    void destroyed()//
     {
         if (deathEffects != null)
         {
