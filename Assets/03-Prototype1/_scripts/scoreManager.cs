@@ -17,11 +17,16 @@ public class scoreManager : MonoBehaviour
         scoreM = this;
     }
 
+    private void Start()
+    {
+        addScore(0);
+    }
+
     public void addScore(int addScore)
     {
         score += addScore;
 
-        //scoreTxt.text = "Exterminated: " + score;
+        scoreTxt.text = "Exterminated: " + score;
 
         if (score >= winScore)
         {
