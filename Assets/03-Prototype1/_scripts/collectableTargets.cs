@@ -19,8 +19,6 @@ public class collectableTargets : MonoBehaviour
 
     private int state;
 
-    public GameObject deathEffects;
-
     public GameObject legs;
     private Vector3 legPos;
 
@@ -40,14 +38,14 @@ public class collectableTargets : MonoBehaviour
 
     private void Update()
     {
-        legs.transform.position = transform.position + legPos;
-
         if (state == 0)
         {
             if (!nav.hasPath || nav.pathStatus == NavMeshPathStatus.PathPartial)
             {
                 millAbout();
             }
+
+            legs.transform.position = transform.position + legPos;
         }
         else if (state == 1)
         {
@@ -55,6 +53,8 @@ public class collectableTargets : MonoBehaviour
             {
                 runAway();
             }
+
+            legs.transform.position = transform.position + legPos;
         }
     }
 
@@ -105,8 +105,10 @@ public class collectableTargets : MonoBehaviour
     {
         scoreManager.scoreM.addScore(1);
 
-        GameObject de = Instantiate(deathEffects, transform.position, transform.rotation);
-        Destroy(gameObject);
+        state = 2;
+        GetComponent<Collider>().enabled = false;
+
+        GetComponent<Animator>().SetBool("dead", true);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -78,7 +78,7 @@ public class playerController : MonoBehaviour
 
         weapon.transform.LookAt(mousePos3D);
 
-        //Jump/Hover System
+        //Jump/Hover System//
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(jumpState < 2)

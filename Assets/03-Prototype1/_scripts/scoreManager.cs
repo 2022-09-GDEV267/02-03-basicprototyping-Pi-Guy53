@@ -8,7 +8,7 @@ public class scoreManager : MonoBehaviour
     public static scoreManager scoreM;
 
     public int score;
-    public Text scoreText;
+    public Text scoreTxt;
 
     public int winScore;
 
@@ -20,6 +20,8 @@ public class scoreManager : MonoBehaviour
     public void addScore(int addScore)
     {
         score += addScore;
+
+        //scoreTxt.text = "Exterminated: " + score;
 
         if (score >= winScore)
         {
