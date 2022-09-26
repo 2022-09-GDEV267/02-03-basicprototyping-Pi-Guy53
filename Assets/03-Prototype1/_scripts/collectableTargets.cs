@@ -17,6 +17,11 @@ public class collectableTargets : MonoBehaviour
 
     private int state;
 
+    public GameObject deathEffects;
+
+    public GameObject legs;
+    private Vector3 legPos;
+
     private void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -26,17 +31,24 @@ public class collectableTargets : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
+        legPos = legs.transform.position - transform.position;
+
         //debug
         state = 1;
     }
 
     private void Update()
     {
-        if(state == 0)
+        legs.transform.position = transform.position + legPos;
+
+        if (state == 0)
         {
-            
+            if (!nav.hasPath || nav.pathStatus == NavMeshPathStatus.PathPartial)
+            {
+                millAbout();
+            }
         }
-        else if(state == 1)
+        else if (state == 1)
         {
             if (!nav.hasPath || nav.pathStatus == NavMeshPathStatus.PathPartial)
             {
@@ -47,7 +59,7 @@ public class collectableTargets : MonoBehaviour
 
     void millAbout()
     {
-
+        nav.destination = transform.position + (transform.forward * Random.Range(-sampleRadius, sampleRadius)) + (transform.right * Random.Range(-sampleRadius, sampleRadius));
     }
 
     void runAway()
@@ -71,5 +83,21 @@ public class collectableTargets : MonoBehaviour
         }
 
         nav.destination = winSample;
+    }
+
+    void collected()
+    {
+        scoreManager.scoreM.addScore(1);
+
+        GameObject de = Instantiate(deathEffects, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.GetComponent<Projectile>())
+        {
+            collected();
+        }
     }
 }
