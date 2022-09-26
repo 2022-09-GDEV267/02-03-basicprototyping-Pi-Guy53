@@ -70,8 +70,10 @@ public class playerController : MonoBehaviour
             mousePos3D = hit.point;
         }
 
-        crossHairs.transform.position = mousePos3D;
-        crossHairs.transform.LookAt(cam.transform.position);
+        //crossHairs.transform.position = mousePos3D;
+        //crossHairs.transform.LookAt(cam.transform.position);
+
+        crossHairs.transform.position = cam.GetComponent<Camera>().WorldToScreenPoint(mousePos3D);
 
         eye.transform.LookAt(mousePos3D);
 

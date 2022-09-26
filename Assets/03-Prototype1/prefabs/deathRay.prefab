@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8007652668448495738}
   - component: {fileID: 3031139498747887993}
   - component: {fileID: 1721367505460648750}
+  - component: {fileID: -6584036293035845784}
   m_Layer: 0
   m_Name: deathRay
   m_TagString: Untagged
@@ -194,3 +195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+--- !u!122 &-6584036293035845784
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6595509547082640064}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4281007997
+  m_Size: 0.125

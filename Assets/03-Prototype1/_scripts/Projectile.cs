@@ -12,6 +12,14 @@ public class Projectile : MonoBehaviour
         Invoke("destroyThis", lifeTime);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.collider.CompareTag("Player"))
+        {
+            destroyThis();
+        }
+    }
+
     void destroyThis()
     {
         Destroy(gameObject);

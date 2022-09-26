@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class weaponSystems : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class weaponSystems : MonoBehaviour
 
     private bool fired;
 
+    public Image reloadImg;
+    private float reloadFill;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -24,11 +28,15 @@ public class weaponSystems : MonoBehaviour
                 fire();
             }
         }
+
+        reloadFill += Time.deltaTime * rateOfFire;
+        reloadImg.fillAmount = reloadFill;
     }
 
     void fire()
     {
         fired = true;
+        reloadFill = 0;
 
         GameObject thisShot = Instantiate(bullet, fireTransform.transform.position, fireTransform.transform.rotation);
         thisShot.GetComponent<Projectile>().setUp(range / velocity, damage);

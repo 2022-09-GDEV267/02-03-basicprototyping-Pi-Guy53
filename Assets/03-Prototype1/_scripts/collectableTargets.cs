@@ -9,6 +9,8 @@ public class collectableTargets : MonoBehaviour
     public float turningSpeed;
     public float stoppingDist;
 
+    public float viewRange;
+
     public int numSampleRunPoints;
     public float sampleRadius;
 
@@ -33,8 +35,7 @@ public class collectableTargets : MonoBehaviour
 
         legPos = legs.transform.position - transform.position;
 
-        //debug
-        state = 1;
+        state = 0;
     }
 
     private void Update()
@@ -53,6 +54,21 @@ public class collectableTargets : MonoBehaviour
             if (!nav.hasPath || nav.pathStatus == NavMeshPathStatus.PathPartial)
             {
                 runAway();
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(state == 0)
+        {
+            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out RaycastHit hit, viewRange))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    state = 1;
+                    speed = speed * 2;
+                }
             }
         }
     }
