@@ -8,7 +8,9 @@ public class playerController : MonoBehaviour
     private float inputAxis;
 
     public float speed;
-    public float jumpTime;
+    public float jumpHeight;
+    private int jumpState = 0;
+    private RaycastHit groundHit;
 
     public GameObject basePiece;
     public GameObject body;
@@ -70,14 +72,27 @@ public class playerController : MonoBehaviour
             mousePos3D = hit.point;
         }
 
-        //crossHairs.transform.position = mousePos3D;
-        //crossHairs.transform.LookAt(cam.transform.position);
-
         crossHairs.transform.position = cam.GetComponent<Camera>().WorldToScreenPoint(mousePos3D);
 
         eye.transform.LookAt(mousePos3D);
 
         weapon.transform.LookAt(mousePos3D);
+
+        //Jump/Hover System
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(jumpState < 2)
+            {
+                jumpState++;
+            }
+            else
+            {
+                jumpState = 0;
+            }
+        }
+
+        Physics.Raycast(transform.position, transform.up * -1, out groundHit, jumpHeight * 3, ignoreMouseLayer);
+        transform.position = Vector3.Lerp(transform.position, groundHit.point + transform.up * ((jumpHeight * jumpState) + .75f), .05f);
 
         //model rotations/positions
         Vector3 weaponVector = weapon.transform.forward;

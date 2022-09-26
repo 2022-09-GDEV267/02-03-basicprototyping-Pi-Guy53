@@ -287,6 +287,19 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!65 &14130446
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381843725767068573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.25, z: 1}
+  m_Center: {x: 0, y: -0.6, z: 0.125}
 --- !u!43 &18436616
 Mesh:
   m_ObjectHideFlags: 0
@@ -20377,7 +20390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  jumpTime: 0
+  jumpHeight: 2
   basePiece: {fileID: 2381843725767068578}
   body: {fileID: 2381843725767068577}
   head: {fileID: 2381843725767068576}
