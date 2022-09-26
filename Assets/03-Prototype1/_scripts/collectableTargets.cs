@@ -67,7 +67,6 @@ public class collectableTargets : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     state = 1;
-                    speed = speed * 2;
                 }
             }
         }
@@ -80,6 +79,8 @@ public class collectableTargets : MonoBehaviour
 
     void runAway()
     {
+        nav.speed = speed * 2;
+
         Vector3 samplePoint;
         Vector3 winSample = transform.position;
 

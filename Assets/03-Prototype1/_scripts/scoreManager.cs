@@ -30,7 +30,7 @@ public class scoreManager : MonoBehaviour
 
         if (score >= winScore)
         {
-            //Win
+            //win
         }
     }
 }

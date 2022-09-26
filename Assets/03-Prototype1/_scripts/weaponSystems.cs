@@ -29,8 +29,8 @@ public class weaponSystems : MonoBehaviour
             }
         }
 
-        reloadFill += Time.deltaTime * rateOfFire;
-        reloadImg.fillAmount = reloadFill;
+        reloadFill += Time.deltaTime;
+        reloadImg.fillAmount = (1 / rateOfFire) * reloadFill;
     }
 
     void fire()

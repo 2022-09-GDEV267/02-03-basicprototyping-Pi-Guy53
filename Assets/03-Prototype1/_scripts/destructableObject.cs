@@ -22,7 +22,10 @@ public class destructableObject : MonoBehaviour
 
     void destroyed()
     {
-        GameObject de = Instantiate(deathEffects, transform.position, transform.rotation);
+        if (deathEffects != null)
+        {
+            GameObject de = Instantiate(deathEffects, transform.position, transform.rotation);
+        }
 
         Destroy(gameObject);
     }
