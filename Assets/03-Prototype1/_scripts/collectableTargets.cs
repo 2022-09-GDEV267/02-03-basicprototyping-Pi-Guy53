@@ -108,6 +108,7 @@ public class collectableTargets : MonoBehaviour
 
         state = 2;
         GetComponent<Collider>().enabled = false;
+        nav.enabled = false;
 
         GetComponent<Animator>().SetBool("dead", true);
     }

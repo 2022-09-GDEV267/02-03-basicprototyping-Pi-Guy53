@@ -52,7 +52,7 @@ public class playerController : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        direction = basePiece.transform.forward * y + basePiece.transform.right * x;
+        direction = body.transform.forward * y + body.transform.right * x;
 
         inputAxis = Mathf.Clamp(Mathf.Abs(x) + Mathf.Abs(y), 0, 1);
 
@@ -81,7 +81,7 @@ public class playerController : MonoBehaviour
         //Jump/Hover System//
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(jumpState < 2)
+            if (jumpState < 2)
             {
                 jumpState++;
             }
@@ -89,21 +89,27 @@ public class playerController : MonoBehaviour
             {
                 jumpState = 0;
             }
+
+            if (Physics.Raycast(transform.position, transform.up * 1, (jumpHeight * jumpState) + .75f, ignoreMouseLayer))
+            {
+                jumpState = 0;
+            }
         }
 
         Physics.Raycast(transform.position, transform.up * -1, out groundHit, jumpHeight * 3, ignoreMouseLayer);
+
         transform.position = Vector3.Lerp(transform.position, groundHit.point + transform.up * ((jumpHeight * jumpState) + .75f), .05f);
 
         //model rotations/positions
         Vector3 weaponVector = weapon.transform.forward;
         weaponVector.y = 0;
 
-        if (Vector3.Angle(weapon.transform.forward, body.transform.forward) > maxWeaponRot && Vector3.Distance(transform.position, mousePos3D) > 1) 
+        if (Vector3.Angle(weapon.transform.forward, body.transform.forward) > maxWeaponRot && Vector3.Distance(transform.position, mousePos3D) > 1)
         {
             body.transform.localRotation = Quaternion.Lerp(body.transform.rotation, Quaternion.LookRotation(weaponVector), rotationalLerp * 2);
         }
 
-        if (y >= 0 || (y < 0 && x !=0))
+        if (y >= 0 || (y < 0 && x != 0))
         {
             basePiece.transform.rotation = Quaternion.Lerp(basePiece.transform.rotation, Quaternion.LookRotation(direction.normalized), rotationalLerp);
         }
