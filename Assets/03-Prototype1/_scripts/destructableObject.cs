@@ -7,6 +7,15 @@ public class destructableObject : MonoBehaviour
     public float health;
     public GameObject deathEffects;
 
+    private bool inUse;
+    private MultiObjDestroy mod;
+
+    public void setUp(MultiObjDestroy _mod)
+    {
+        mod = _mod;
+        inUse = true;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.GetComponent<Projectile>())
@@ -25,6 +34,11 @@ public class destructableObject : MonoBehaviour
         if (deathEffects != null)
         {
             GameObject de = Instantiate(deathEffects, transform.position, transform.rotation);
+        }
+
+        if(inUse)
+        {
+            mod.objDestroyed();
         }
 
         Destroy(gameObject);
