@@ -136,7 +136,6 @@ MonoBehaviour:
   viewRange: 30
   numSampleRunPoints: 5
   sampleRadius: 3
-  deathEffects: {fileID: 4124568912263038016, guid: a8923092ca8c1400994440b8de538c6b, type: 3}
   legs: {fileID: 9176962172798540650}
 --- !u!1 &9176962172798540650 stripped
 GameObject:

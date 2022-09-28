@@ -79,7 +79,7 @@ public class collectableTargets : MonoBehaviour
 
     void runAway()
     {
-        nav.speed = speed * 2;
+        nav.speed = speed * 3;
 
         Vector3 samplePoint;
         Vector3 winSample = transform.position;

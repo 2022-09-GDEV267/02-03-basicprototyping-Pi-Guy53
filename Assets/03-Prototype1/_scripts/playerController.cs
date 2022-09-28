@@ -47,7 +47,7 @@ public class playerController : MonoBehaviour
         cam = Camera.main.gameObject;
     }
 
-    void Update()
+    void Update()//
     {
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
@@ -110,9 +110,9 @@ public class playerController : MonoBehaviour
         }
 
         if (y >= 0 || (y < 0 && x != 0))
-        {
+        { }
             basePiece.transform.rotation = Quaternion.Lerp(basePiece.transform.rotation, Quaternion.LookRotation(direction.normalized), rotationalLerp);
-        }
+
 
         head.transform.localRotation = Quaternion.Euler(0, eye.transform.localEulerAngles.y, 0);
         eyeStalk.transform.localRotation = Quaternion.Euler(eye.transform.localEulerAngles.x, 0, 0);
