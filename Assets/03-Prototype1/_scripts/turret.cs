@@ -7,6 +7,7 @@ public class turret : MonoBehaviour
     private GameObject player;
 
     public GameObject barrel;
+    public GameObject fireTransform;
 
     public int shotsToFireInBurst;
     public float rateOfFire;
@@ -70,11 +71,11 @@ public class turret : MonoBehaviour
 
                 thisBullet.SetActive(true);
 
-                thisBullet.transform.position = barrel.transform.position;
-                thisBullet.transform.rotation = barrel.transform.rotation;
+                thisBullet.transform.position = fireTransform.transform.position;
+                thisBullet.transform.rotation = fireTransform.transform.rotation;
 
                 thisBullet.GetComponent<bullet>().setUp(range / velocity);
-                thisBullet.GetComponent<Rigidbody>().AddForce(barrel.transform.forward * velocity, ForceMode.Impulse);
+                thisBullet.GetComponent<Rigidbody>().AddForce(fireTransform.transform.forward * velocity, ForceMode.Impulse);
 
                 fired = true;
 

@@ -98,7 +98,7 @@ public class playerController : MonoBehaviour
 
         Physics.Raycast(transform.position, transform.up * -1, out groundHit, jumpHeight * 3, ignoreMouseLayer);
 
-        transform.position = Vector3.Lerp(transform.position, groundHit.point + transform.up * ((jumpHeight * jumpState) + .75f), .05f);
+        transform.position = Vector3.Lerp(transform.position, groundHit.point + transform.up * ((jumpHeight * jumpState) + .75f), .025f);
 
         //model rotations/positions
         Vector3 weaponVector = weapon.transform.forward;
