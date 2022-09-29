@@ -21,8 +21,8 @@ TagManager:
   - lever
   - bullet
   - raycast no physics
-  - 
-  - 
+  - turretBullet
+  - shield
   - 
   - 
   - 
