@@ -98,23 +98,24 @@ public class playerController : MonoBehaviour
 
         Physics.Raycast(transform.position, transform.up * -1, out groundHit, jumpHeight * 3, ignoreMouseLayer);
 
+        //model rotations/positions
+
+        basePiece.transform.rotation = Quaternion.Lerp(basePiece.transform.rotation, Quaternion.LookRotation(direction.normalized), rotationalLerp);
+
+        head.transform.localRotation = Quaternion.Euler(0, eye.transform.localEulerAngles.y, 0);
+        eyeStalk.transform.localRotation = Quaternion.Euler(eye.transform.localEulerAngles.x, 0, 0);
+    }
+
+    void FixedUpdate()
+    {
         transform.position = Vector3.Lerp(transform.position, groundHit.point + transform.up * ((jumpHeight * jumpState) + .75f), .025f);
 
-        //model rotations/positions
         Vector3 weaponVector = weapon.transform.forward;
         weaponVector.y = 0;
 
         if (Vector3.Angle(weapon.transform.forward, body.transform.forward) > maxWeaponRot && Vector3.Distance(transform.position, mousePos3D) > 1)
         {
-            body.transform.localRotation = Quaternion.Lerp(body.transform.rotation, Quaternion.LookRotation(weaponVector), rotationalLerp * 2);
+            body.transform.localRotation = Quaternion.Lerp(body.transform.rotation, Quaternion.LookRotation(weaponVector), rotationalLerp);
         }
-
-        if (y >= 0 || (y < 0 && x != 0))
-        { }
-            basePiece.transform.rotation = Quaternion.Lerp(basePiece.transform.rotation, Quaternion.LookRotation(direction.normalized), rotationalLerp);
-
-
-        head.transform.localRotation = Quaternion.Euler(0, eye.transform.localEulerAngles.y, 0);
-        eyeStalk.transform.localRotation = Quaternion.Euler(eye.transform.localEulerAngles.x, 0, 0);
     }
 }
